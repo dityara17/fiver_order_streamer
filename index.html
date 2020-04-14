@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=us-ascii">
+    <meta name="description" content="SCUFFED IP2 NETWORK IRL & Desktop YouTube, Twitch, Mixer and DLive streamers">
+    <meta name="keywords"
+          content="ip2 ice_poseidon2 network cx ice poseidon live reddit saidit youtube twitch dlive mixer irl">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <meta name="msapplication-TileColor" content="#603cba">
+    <meta name="theme-color" content="#ffffff">
+    <title>scuffedip2network.live</title>
+
+    <link href="index.css" rel="stylesheet" type="text/css"/>
+    <link color="#603cba" href="" rel="mask-icon"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-146206892-1');
+    </script>
+</head>
+<body>
+
+<div class="loader">
+    <div class="sk-chase">
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+        <div class="sk-chase-dot"></div>
+    </div>
+</div>
+
+<div id="dashboard">
+    <div class="container">
+        <div class="channels">
+            <div class="header">
+                <div class="name">Channel</div>
+
+                <div class="alert"></div>
+
+                <div class="status"><small>Online Status</small></div>
+            </div>
+
+            <div id="channel-list">
+
+
+            </div>
+
+            <script>
+                $(document).ready(function () {
+                    $.ajax({
+                        url: 'getStreamer.php', // your php file
+                        type: 'GET', // type of the HTTP request
+                        beforeSend: function(){
+                            // Show image container
+                            $(".loader").show();
+                        },
+                        success: function (data) {
+                            var obj = jQuery.parseJSON(data);
+                            var channelListHtml = "";
+                            for (var i = 0; i < obj.length; i++) {
+                                var avatar = obj[i].avatar;
+                                var title = obj[i].title;
+                                var description = obj[i].description;
+                                var channelId = obj[i].channelId;
+                                var channelTitle = obj[i].channelTitle;
+                                var status = obj[i].status;
+                                var app = obj[i].app;
+
+                                channelListHtml += '<div class="channel youtube online">';
+                                if (app == 'youtube') {
+                                    channelListHtml += '<a href="https://www.youtube.com/channel/' + channelId + '" >';
+                                } else if (app == 'mixer') {
+                                    channelListHtml += '<a target="_blank" href="https://mixer.com/' + channelId + '" >';
+                                }
+                                channelListHtml += '    <div class="avatar">';
+                                channelListHtml += '        <div class="image" style="background-image: url(&quot;' + avatar + '&quot;);"></div>';
+                                channelListHtml += '    </div>';
+                                channelListHtml += '    </a>';
+
+                                channelListHtml += '  <div class="details">';
+                                channelListHtml += '  <div class="name">';
+                                if (app == 'youtube') {
+                                    channelListHtml += '<a target="_blank" href="https://www.youtube.com/channel/' + channelId + '" >';
+                                } else if (app == 'mixer') {
+                                    channelListHtml += '<a target="_blank" href="https://mixer.com/' + channelId + '" >';
+                                }
+                                channelListHtml += ' <div style="color: #ffffff" class="channel_name">' + channelTitle + '</div>';
+                                channelListHtml += ' <div class="stream_title">' + title + '</div>';
+
+                                channelListHtml += '<a>';
+                                channelListHtml += '  </div>';
+                                channelListHtml += '  </div>';
+                                if (app == 'youtube' && status == 'on') {
+                                    channelListHtml += ' <div class="dot" style="color: red;background-color: red;"></div>';
+                                } else if (app == 'mixer' && status == 'on') {
+                                    channelListHtml += ' <div class="dot" style="color: blueviolet;background-color: blueviolet;"></div>';
+                                } else if (app == 'youtube' && status == 'off') {
+                                    channelListHtml += ' <div class="" style="color: #ffffff;background-color: transparent;">Offline</div>';
+                                } else {
+                                    channelListHtml += ' <div class="" style="color: #ffffff;background-color: transparent;">Offline</div>';
+                                }
+                                channelListHtml += '</div>';
+                                channelListHtml += ' <div class="alert"></div>';
+                            }
+                            $("#channel-list").append(channelListHtml);
+                           $("#dashboard").show();
+                           $(".loader").hide();
+                        }
+                    });
+                })
+            </script>
+
+
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

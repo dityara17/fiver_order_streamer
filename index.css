@@ -378,6 +378,6 @@ body {
     margin: auto;
 }
 
-#dashboard{
+#dashboard,#logo{
     display: none;
 }

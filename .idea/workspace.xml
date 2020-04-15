@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bdc1922b-cf1b-44a0-a520-86c8ed4e1b2a" name="Default Changelist" comment="" />
+    <list default="true" id="bdc1922b-cf1b-44a0-a520-86c8ed4e1b2a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/scrape.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getStreamer.php" beforeDir="false" afterPath="$PROJECT_DIR$/getStreamer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,20 +50,48 @@
       <option name="presentableId" value="Default" />
       <updated>1586839346912</updated>
       <workItem from="1586839348288" duration="16254000" />
+      <workItem from="1586867991431" duration="127000" />
+      <workItem from="1586893957295" duration="3910000" />
     </task>
+    <task id="LOCAL-00001" summary="add footer keri pak">
+      <created>1586868028190</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586868028190</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="add footer keri pak" />
+    <option name="LAST_COMMIT_MESSAGE" value="add footer keri pak" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="249" y="32" key="CommitChangelistDialog2" timestamp="1586868027694">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="249" y="32" key="CommitChangelistDialog2/0.23.1440.877@0.23.1440.877" timestamp="1586868027694" />
     <state x="628" y="330" key="Github.ShareDialog" timestamp="1586866772357">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
     <state x="628" y="330" key="Github.ShareDialog/0.23.1440.877@0.23.1440.877" timestamp="1586866772357" />
-    <state x="581" y="360" key="NewPhpFileDialog" timestamp="1586839936113">
+    <state x="581" y="360" key="NewPhpFileDialog" timestamp="1586911547902">
       <screen x="0" y="23" width="1440" height="877" />
     </state>
-    <state x="581" y="360" key="NewPhpFileDialog/0.23.1440.877@0.23.1440.877" timestamp="1586839936113" />
+    <state x="581" y="360" key="NewPhpFileDialog/0.23.1440.877@0.23.1440.877" timestamp="1586911547902" />
+    <state x="363" y="169" key="Vcs.Push.Dialog.v2" timestamp="1586868055590">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="363" y="169" key="Vcs.Push.Dialog.v2/0.23.1440.877@0.23.1440.877" timestamp="1586868055590" />
+    <state x="546" y="353" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586913129860">
+      <screen x="0" y="23" width="1440" height="877" />
+    </state>
+    <state x="546" y="353" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.877@0.23.1440.877" timestamp="1586913129860" />
   </component>
 </project>

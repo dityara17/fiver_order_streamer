@@ -1,5 +1,5 @@
 <?php
-
+require 'simplehtmldom_1_9_1/simple_html_dom.php';
 // list youtuber
 /**
  * Youtubers to add 
@@ -10,7 +10,7 @@
 
 $youtubers = array(
     ['name' => 'name1', 'username' => 'UCb7UtqKUvEM_pmncmfrwVbQ'],
-    ['name' => 'name2', 'username' => 'UCzB4SM7GxMf0ZOAgN50k'],
+    ['name' => 'name2', 'username' => 'UCzB4SM7GxMf0ZOAgN50k-cA'],
 //    ['name' => 'name3', 'username' => 'UC6Ho9AYLMpPjT5NXmPeGXEA'],
 //    ['name' => 'name4', 'username' => 'UCRtILsWiYIWKMBgVY82ndEw'],
 //    ['name' => 'name5', 'username' => 'UC8a87KN4-w-ExcGufTeX9KQ'],
@@ -90,11 +90,23 @@ function mixser($mixers)
     return $mixersOutput;
 }
 
+function getImgYoutube($channel)
+{
+
+
+    $html = file_get_html("https://www.youtube.com/channel/" . $channel . "", false);
+
+
+    foreach ($html->find('img.channel-header-profile-image') as $e)
+        $data = $e->src;
+
+    return $data;
+}
+
 function youtube($youtubers)
 {
     $youtubersOutput = [];
 // grab data youtubers
-//    for ($i = 0; $i < count($youtubers); $i++) {
     foreach ($youtubers as $youtuber) {
         $ch = curl_init();
 
@@ -107,11 +119,13 @@ function youtube($youtubers)
         $extractInfo = str_replace('},]', "}]", $extractInfo);
         $showInfo = json_decode($extractInfo, true);
 
+        $imgYoutube = getImgYoutube($ChannelID);
+
         if ($showInfo['pageInfo']['totalResults'] === 0) {
 
             // not live
             $youtubersOutput[] = [
-                "avatar" => "",
+                "avatar" => $imgYoutube,
                 "title" => "",
                 "description" => "",
                 "channelId" => $youtuber['username'],
@@ -123,7 +137,7 @@ function youtube($youtubers)
         } else {
 
             $youtubersOutput[] = [
-                "avatar" => $showInfo['items'][0]['snippet']['thumbnails']['medium']['url'],
+                "avatar" => $imgYoutube,
                 "title" => $showInfo['items'][0]['snippet']['title'],
                 "description" => $showInfo['items'][0]['snippet']['description'],
                 "channelId" => $showInfo['items'][0]['snippet']['channelId'],

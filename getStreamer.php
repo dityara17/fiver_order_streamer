@@ -9,11 +9,11 @@ require 'simplehtmldom_1_9_1/simple_html_dom.php';
 
 
 $youtubers = array(
-    ['name' => 'name1', 'username' => 'UCb7UtqKUvEM_pmncmfrwVbQ'],
-    ['name' => 'name2', 'username' => 'UCzB4SM7GxMf0ZOAgN50k-cA'],
-//    ['name' => 'name3', 'username' => 'UC6Ho9AYLMpPjT5NXmPeGXEA'],
-//    ['name' => 'name4', 'username' => 'UCRtILsWiYIWKMBgVY82ndEw'],
-//    ['name' => 'name5', 'username' => 'UC8a87KN4-w-ExcGufTeX9KQ'],
+    ['name' => 'Anon,', 'username' => 'UCaMKaSneK--9QLtkDlj2dag'],
+//    ['name' => 'RIOTCOKE', 'username' => 'UCb7UtqKUvEM_pmncmfrwVbQ'],
+//    ['name' => 'SKIMASK', 'username' => 'UCzB4SM7GxMf0ZOAgN50k-cA'],
+//    ['name' => 'Toe Andy', 'username' => 'UCHIGOHT0S3ovAzkA0FuDgww'],
+//    ['name' => 'SKIMASK ANDY COVID SURVIVOR IRL', 'username' => 'UCzB4SM7GxMf0ZOAgN50k-cA'],
 
 );
 
@@ -70,6 +70,7 @@ function mixser($mixers)
                 "title" => $showInfo['user']['username'],
                 "description" => $showInfo['user']['bio'],
                 "channelId" => $showInfo['user']['username'],
+                "videoId" => $showInfo['user']['videoId'],
                 "channelTitle" => $showInfo['user']['username'],
                 "app" => "mixer",
                 "status" => "on"
@@ -80,6 +81,7 @@ function mixser($mixers)
                 "title" => $showInfo['user']['username'],
                 "description" => $showInfo['user']['bio'],
                 "channelId" => $showInfo['user']['username'],
+                "videoId" => $showInfo['user']['username'],
                 "channelTitle" => $showInfo['user']['username'],
                 "app" => "mixer",
                 "status" => "off"
@@ -93,9 +95,7 @@ function mixser($mixers)
 function getImgYoutube($channel)
 {
 
-
     $html = file_get_html("https://www.youtube.com/channel/" . $channel . "", false);
-
 
     foreach ($html->find('img.channel-header-profile-image') as $e)
         $data = $e->src;
@@ -110,7 +110,7 @@ function youtube($youtubers)
     foreach ($youtubers as $youtuber) {
         $ch = curl_init();
 
-        $API_KEY = 'AIzaSyBljR3OiziTMOtFgMihP70Juo6bjELj_js';
+        $API_KEY = 'AIzaSyC_fX0GQBVriAQ3bPoHsAg4ACG2lqnQVEU';
         $ChannelID = $youtuber['username'];
 
         $channelInfo = 'https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=' . $ChannelID . '&type=video&eventType=live&key=' . $API_KEY;
@@ -129,6 +129,7 @@ function youtube($youtubers)
                 "title" => "",
                 "description" => "",
                 "channelId" => $youtuber['username'],
+                'videoId' => '',
                 "channelTitle" => $youtuber['name'],
                 "app" => "youtube",
                 "status" => "off"
@@ -141,6 +142,7 @@ function youtube($youtubers)
                 "title" => $showInfo['items'][0]['snippet']['title'],
                 "description" => $showInfo['items'][0]['snippet']['description'],
                 "channelId" => $showInfo['items'][0]['snippet']['channelId'],
+                'videoId' => $showInfo['items'][0]['id']['videoId'],
                 "channelTitle" => $showInfo['items'][0]['snippet']['channelTitle'],
                 "app" => "youtube",
                 "status" => "on"

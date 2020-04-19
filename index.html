@@ -58,10 +58,9 @@
             <script>
                 $(document).ready(function () {
                     $.ajax({
-                        url: 'getStreamer.php', // your php file
-                        type: 'GET', // type of the HTTP request
+                        url: 'getStreamer.php', //
+                        type: 'GET',
                         beforeSend: function () {
-                            // Show image container
                             $(".loader").show();
                         },
                         success: function (data) {
@@ -72,13 +71,14 @@
                                 var title = obj[i].title;
                                 var description = obj[i].description;
                                 var channelId = obj[i].channelId;
+                                var videoId = obj[i].videoId;
                                 var channelTitle = obj[i].channelTitle;
                                 var status = obj[i].status;
                                 var app = obj[i].app;
 
                                 channelListHtml += '<div class="channel youtube online">';
                                 if (app == 'youtube') {
-                                    channelListHtml += '<a href="https://www.youtube.com/channel/' + channelId + '" >';
+                                    channelListHtml += '<a href="https://www.youtube.com/watch?v=' + videoId + '" >';
                                 } else if (app == 'mixer') {
                                     channelListHtml += '<a target="_blank" href="https://mixer.com/' + channelId + '" >';
                                 }
@@ -90,7 +90,7 @@
                                 channelListHtml += '  <div class="details">';
                                 channelListHtml += '  <div class="name">';
                                 if (app == 'youtube') {
-                                    channelListHtml += '<a target="_blank" href="https://www.youtube.com/channel/' + channelId + '" >';
+                                    channelListHtml += '<a target="_blank" href="https://www.youtube.com/watch?v=' + videoId + '" >';
                                 } else if (app == 'mixer') {
                                     channelListHtml += '<a target="_blank" href="https://mixer.com/' + channelId + '" >';
                                 }
